@@ -1,0 +1,73 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/nahida-cn/Roblox/main/UI-Library.lua"))()
+
+local Window = Library:Window("白玖", "白玖V6 2.0")
+
+Player = Window:Tab("玩家")
+
+Player:Button("飞行", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/U27yQRxS"))()
+end)
+
+Player:Slider("移动速度", 0, 500, game.Players.LocalPlayer.Character.Humanoid.WalkSpeed, function(Value)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+end)
+
+Player:Toggle("穿墙", false, function(Value)
+    Noclip = Value
+    if not Noclip then
+        game.Players.LocalPlayer.Character.Humanoid:ChangeState("Jumping")
+    end
+end)
+
+Player:Toggle("隐身", false, function(Value)
+    Invisible = Value
+    if not Invisible then
+        game.ReplicatedStorage.communication.boxes.cl.BoxUpdated:FireServer("Unequip")
+    end
+end)
+
+Player:Button("点击传送（白玖）", function()
+    mouse = game.Players.LocalPlayer:GetMouse() 
+
+tool = Instance.new("Tool") 
+
+tool.RequiresHandle = false 
+
+tool.Name = "[白玖]点击传送" 
+
+tool.Activated:connect(function() 
+
+local pos = mouse.Hit+Vector3.new(0,2.5,0) 
+
+pos = CFrame.new(pos.X,pos.Y,pos.Z) 
+
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = pos 
+
+end) 
+
+tool.Parent = game.Players.LocalPlayer.Backpack
+end)
+
+Player:Button("自动退出", function()
+    game.Players.LocalPlayer:Kick('退出了吧🤓')
+end)
+
+Baijiu = Window:Tab("白玖V6 1.0")
+
+Baijiu:Button("白玖V6 1.0-白名单", function()
+    loadstring(game:HttpGet("https://ayangwp.cn/api/v3/file/get/9221/%E7%99%BD%E5%90%8D%E5%8D%95%E9%93%BE%E6%8E%A5%E5%8A%A0%E5%AF%86.txt?sign=BWzuMENYrijHSLQSqO40BcEzU3K7rauX1bmD1AYvwPg%3D%3A0"))()
+end)
+
+Ast = Window:Tab("娱乐")
+
+Ast:Button("声音播放器", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/GEianeKX"))()
+end)
+
+About = Window:Tab("关于")
+
+About:Label("作者：白玖")
+
+About:Button("复制作者QQ", function()
+    setclipboard("763005079")
+end)
